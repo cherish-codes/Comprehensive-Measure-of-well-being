@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Comprehensive Measure of Well-Being</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+background:linear-gradient(135deg,#0f172a,#1d4ed8,#38bdf8);
+overflow:hidden;
+position:relative;
+}
+
+/* Animated Background */
+
+body::before,
+body::after{
+content:'';
+position:absolute;
+width:320px;
+height:320px;
+border-radius:50%;
+background:rgba(255,255,255,.08);
+filter:blur(15px);
+animation:float 10s ease-in-out infinite;
+}
+
+body::before{
+top:-120px;
+left:-100px;
+}
+
+body::after{
+bottom:-120px;
+right:-100px;
+animation-delay:5s;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(35px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+.container{
+
+width:100%;
+max-width:680px;
+padding:30px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.2);
+border-radius:25px;
+padding:40px;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.title{
+
+font-size:32px;
+font-weight:700;
+text-align:center;
+color:white;
+margin-bottom:8px;
+
+}
+
+.subtitle{
+
+text-align:center;
+color:#dbeafe;
+margin-bottom:35px;
+font-size:15px;
+
+}
+
+.input-box{
+
+margin-bottom:22px;
+
+}
+
+label{
+
+display:block;
+margin-bottom:8px;
+font-weight:600;
+color:white;
+
+}
+
+input{
+
+width:100%;
+padding:15px 18px;
+border:none;
+border-radius:14px;
+background:rgba(255,255,255,.18);
+color:white;
+font-size:15px;
+outline:none;
+transition:.3s;
+
+}
+
+input::placeholder{
+
+color:#e2e8f0;
+
+}
+
+input:focus{
+
+background:rgba(255,255,255,.25);
+box-shadow:0 0 0 2px #93c5fd;
+
+}
+
+button{
+
+width:100%;
+padding:16px;
+border:none;
+border-radius:14px;
+background:linear-gradient(90deg,#2563eb,#60a5fa);
+font-size:17px;
+font-weight:600;
+color:white;
+cursor:pointer;
+transition:.3s;
+margin-top:10px;
+
+}
+
+button:hover{
+
+transform:translateY(-3px);
+box-shadow:0 12px 20px rgba(0,0,0,.25);
+
+}
+
+.result{
+
+margin-top:30px;
+padding:18px;
+border-radius:15px;
+background:rgba(255,255,255,.18);
+border-left:5px solid #22c55e;
+font-size:17px;
+font-weight:600;
+color:white;
+animation:fadeIn .6s;
+
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.footer{
+
+margin-top:28px;
+text-align:center;
+color:#dbeafe;
+font-size:13px;
+
+}
+
+.footer strong{
+
+color:white;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1 class="title">🌍 Comprehensive Measure of Well-Being</h1>
+
+<p class="subtitle">
+Real-Time Human Development Index Prediction using Machine Learning
+</p>
+
+<form action="/predict" method="POST">
+
+<div class="input-box">
+<label>🩺 Life Expectancy at Birth</label>
+<input
+type="number"
+step="0.01"
+name="life_exp"
+placeholder="Example : 75.4"
+required>
+</div>
+
+<div class="input-box">
+<label>📚 Expected Years of Schooling</label>
+<input
+type="number"
+step="0.01"
+name="exp_school"
+placeholder="Example : 14.2"
+required>
+</div>
+
+<div class="input-box">
+<label>🎓 Mean Years of Schooling</label>
+<input
+type="number"
+step="0.01"
+name="mean_school"
+placeholder="Example : 9.8"
+required>
+</div>
+
+<div class="input-box">
+<label>💰 Gross National Income (GNI) Per Capita</label>
+<input
+type="number"
+step="0.01"
+name="gni"
+placeholder="Example : 22000"
+required>
+</div>
+
+<button type="submit">
+✨ Generate Prediction
+</button>
+</form>
+
+{% if prediction_text %}
+<div class="result">
+    <h3 style="margin-bottom:10px;">📊 Prediction Result</h3>
+    <p>{{ prediction_text }}</p>
+</div>
+{% endif %}
+
+<div class="footer">
+    <p><strong>Developed by</strong></p>
+    <p>K. Charishma</p>
+    <p>Department of Computer Science & Engineering (Data Science)</p>
+    <p>Sri Venkateshwara College of Engineering, Tirupati</p>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
